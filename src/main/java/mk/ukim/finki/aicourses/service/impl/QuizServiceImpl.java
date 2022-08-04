@@ -46,4 +46,15 @@ public class QuizServiceImpl implements QuizService {
     public void delete(Long id) {
         quizRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<Quiz> findByName(String name) {
+        return quizRepository.findByName(name);
+
+    }
+
+    @Override
+    public boolean isPassed(String[] checkboxValues) {
+        return false;
+    }
 }

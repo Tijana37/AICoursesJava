@@ -19,12 +19,12 @@ public class RegisterController {
         this.userService = userService;
     }
 
-    @GetMapping("/register")
+    @GetMapping
     public String getRegister(Model model){
         return "register";
     }
 
-    @PostMapping("/register")
+    @PostMapping
     public String postRegister(@RequestParam String name,
                                @RequestParam String surname,
                                @RequestParam String username,

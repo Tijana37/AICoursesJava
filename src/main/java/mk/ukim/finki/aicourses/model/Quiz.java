@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import mk.ukim.finki.aicourses.model.enums.KnowledgeLevel;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -23,6 +24,10 @@ public class Quiz {
     private Long longitude;
 
     private Long minPoints;
+
+    @OneToMany
+    private List<QuizQuestion> questions;
+
 
     public Quiz(String name, KnowledgeLevel level, Long longitude, Long minPoints) {
         this.name = name;

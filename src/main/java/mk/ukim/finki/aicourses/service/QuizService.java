@@ -17,4 +17,8 @@ public interface QuizService {
     Quiz update(Long id, String name,Long longitude, String level, Long minPoints);
 
     void delete(Long id);
+
+    Optional<Quiz> findByName(String name);
+
+    boolean isPassed(String[] checkboxValues);
 }
