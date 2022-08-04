@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Паметко</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+  <link th:rel="icon" th:href="@{../assets/img/favicon.png}"/>
+  <link th:rel="apple-touch-icon" th:href="@{../assets/img/apple-touch-icon.png}"/>
+  <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+  <!-- Favicons -->
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:rel="stylesheet" th:href="@{../assets/vendor/bootstrap/css/bootstrap.min.css}"/>
+  <link th:rel="stylesheet" th:href="@{../assets/vendor/aos/aos.css}"/>
+  <link th:rel="stylesheet" th:href="@{../assets/vendor/bootstrap-icons/bootstrap-icons.css}"/>
+  <link th:rel="stylesheet" th:href="@{../assets/vendor/boxicons/css/boxicons.min.css}"/>
+  <link th:rel="stylesheet" th:href="@{../assets/vendor/glightbox/css/glightbox.min.css}"/>
+  <link th:rel="stylesheet" th:href="@{../assets/vendor/remixicon/remixicon.css}"/>
+  <link th:rel="stylesheet" th:href="@{../assets/vendor/swiper/swiper-bundle.min.css}"/>
+
+
+  <!-- Template Main CSS File -->
+  <link th:rel="stylesheet" th:href="@{../assets/css/style.css}"/>
+
+  <style>
+    #course_hero{
+      width: 100%;
+      height: 6vh;
+      background: #37517e;
+    }
+    .hero_btn {
+      font-family: "Jost", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 1px;
+      display: inline-block;
+      padding: 5px 14px 6px 14px;
+      border-radius: 50px;
+      transition: 0.5s;
+      margin: 10px 0 0 0;
+      color: white;
+      background: #47b2e4;
+    }
+  </style>
+</head>
+
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top ">
+  <div class="container d-flex align-items-center">
+
+    <h1 class="logo me-auto"><a href="/courses">ПАМЕТКО</a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <a href="/courses" class="logo me-auto rounded-circle float-left"><img th:src= "@{../assets/img/logo.png}" alt="logo" class="img-fluid"></a>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto " href="/index">Почетна</a></li>
+        <li><a class="nav-link scrollto active" href="">Курсeви</a></li>
+        <li><a class="nav-link scrollto" href="/quizes">Квизови</a></li>
+        <li><a class="nav-link   scrollto" href="/experiences">Искуства</a></li>
+        <li><a class="nav-link scrollto" href="/forum">Форум</a></li>
+        <li th:if="${session.user==null}"><a class="nav-link scrollto" href="/signin">Најава</a></li>
+        <li th:if="${session.user==null}"><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
+        <li th:if="${session.user!=null}"><a class="getstarted scrollto" href="/logout">Одјави се</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+  </div>
+</header><!-- End Header -->
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="course_hero" class="d-flex align-items-center">
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Курсеви</h2>
+          <p>Избери курс според твоето ниво на знаење.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6 ">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+              <div class="pic"><img th:src= "@{../assets/img/team/intro-ai.webp}"  class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Вовед во вештачка интелигенција</h4>
+                <span>Ниво: Почетно <br> Траење: 5часа <br>Предавач: Ана Анева<br></span>
+                <div  class="hero_btn d-flex justify-content-center justify-content-lg-start">
+                  <a href="/courses/course_AI_intro" style="color: white">ЗАПОЧНИ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+              <div class="pic"><img th:src="@{assets/img/team/ml.jpg}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Mашинско учење во продукција</h4>
+                <span>Ниво: Средно <br> Траење: 7часа <br>Предавач: Марко Марков</span>
+                <div  class="hero_btn d-flex justify-content-center justify-content-lg-start">
+                  <a href="/course_AI_intro" style="color: white">ЗАПОЧНИ</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+
+  </main><!-- End #main -->
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h4>Предложи нов курс</h4>
+            <div  th:if="${suggestion}" class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Успешно испратен предлог!</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form action="/suggestion" method="post">
+              <input type="text" class="form-control" name="suggestion"><input type="submit" value="Внеси">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container footer-bottom clearfix">
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script th:src="@{../assets/vendor/aos/aos.js}"></script>
+<script th:src="@{../assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{../assets/vendor/glightbox/js/glightbox.min.js}"></script>
+<script th:src="@{../assets/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+<script th:src="@{../assets/vendor/swiper/swiper-bundle.min.js}"></script>
+<script th:src="@{../assets/vendor/waypoints/noframework.waypoints.js}"></script>
+<script th:src="@{../assets/vendor/php-email-form/validate.js}"></script>
+
+<!-- Template Main JS File -->
+<script th:src="@{../assets/js/main.js}"></script>
+
+</body>
+
+</html>

@@ -34,23 +34,23 @@ public class DataInitializer {
 
     @PostConstruct
     public void initData() {
-        User admin = this.userService.create("admin", "admin", "", "admin", Role.ADMIN);
+        //User admin = this.userService.create("Admin", "Admin", "admin", "admin","","", Role.ADMIN);
 
-        //Course 1
-        this.courseService.create("Вовед во вештачка интелигенција", 5L, "Ана Анева",
-                "BEGINNER", 0L );
-
-        //Course 2
-        this.courseService.create("Mашинско учење во продукција", 7L, "Марко Марков",
-                "MIDDLE", 0L );
-
-
-        //Quiz 1
-        this.quizService.create("Вовед во вештачка интелигенција", 40L, "BEGINNER",
-                50L );
-
-        //Quiz 2
-        this.quizService.create("Mашинско учење во продукција", 70L, "MIDDLE", 70L );
+//        //Course 1
+//        this.courseService.create("Вовед во вештачка интелигенција", 5L, "Ана Анева",
+//                "BEGINNER", 0L );
+//
+//        //Course 2
+//        this.courseService.create("Mашинско учење во продукција", 7L, "Марко Марков",
+//                "MIDDLE", 0L );
+//
+//
+//        //Quiz 1
+//        this.quizService.create("Вовед во вештачка интелигенција", 40L, "BEGINNER",
+//                50L );
+//
+//        //Quiz 2
+//        this.quizService.create("Mашинско учење во продукција", 70L, "MIDDLE", 70L );
 
     }
 }

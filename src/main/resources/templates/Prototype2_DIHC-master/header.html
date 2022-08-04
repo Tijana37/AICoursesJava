@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Паметко</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <link th:rel="icon" th:href="@{../assets/img/favicon.png}"/>
+    <link th:rel="apple-touch-icon" th:href="@{../assets/img/apple-touch-icon.png}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <!-- Favicons -->
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link th:rel="stylesheet" th:href="@{../assets/vendor/bootstrap/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{../assets/vendor/aos/aos.css}"/>
+    <link th:rel="stylesheet" th:href="@{../assets/vendor/bootstrap-icons/bootstrap-icons.css}"/>
+    <link th:rel="stylesheet" th:href="@{../assets/vendor/boxicons/css/boxicons.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{../assets/vendor/glightbox/css/glightbox.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{../assets/vendor/remixicon/remixicon.css}"/>
+    <link th:rel="stylesheet" th:href="@{../assets/vendor/swiper/swiper-bundle.min.css}"/>
+
+
+    <!-- Template Main CSS File -->
+    <link th:rel="stylesheet" th:href="@{../assets/css/style.css}"/>
+
+
+</head>
+
+<body>
+
+
+<header id="header" class="fixed-top ">
+
+    <div class="container d-flex align-items-center">
+
+        <h1 class="logo me-auto"><a href="/courses">ПАМЕТКО</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="/courses" class="logo me-auto rounded-circle float-left">
+            <img th:src= "@{../assets/img/logo.png}" alt="logo" class="img-fluid"></a>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="">Почетна</a></li>
+                <li><a class="nav-link scrollto" href="/courses">Курсeви</a></li>
+                <li><a class="nav-link scrollto" href="/quizes">Квизови</a></li>
+                <li><a class="nav-link   scrollto" href="/experiences">Искуства</a></li>
+                <li><a class="nav-link scrollto" href="/forum">Форум</a></li>
+                <li><a class="nav-link scrollto" href="/signin">Најава</a></li>
+                <li><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header><!-- End Header -->
+</body>
+</html>

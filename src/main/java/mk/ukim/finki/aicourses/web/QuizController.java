@@ -1,23 +1,20 @@
 package mk.ukim.finki.aicourses.web;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/courses")
-public class CourseController {
-
+@RequestMapping("/quizes")
+public class QuizController {
     @GetMapping
-    public String getCourses(Model model){
-        return "courses";
+    public String getQuizes(Model model){
+        return "quizes";
     }
 
-    @GetMapping("/course_AI_intro")
-    public String getCourseAIIntro(Model model){
-        return "course_AI_intro";
-
+    @GetMapping("/quiz_AI_intro")
+    public String getQuizAI(Model model){
+        return "quiz_AI_intro";
     }
 }

@@ -13,7 +13,7 @@ import java.util.Objects;
 public class UserQuizCompositeKey implements Serializable {
 
     @Column(name = "user_id")
-    private Long userId;
+    private String userId;
 
     @Column(name = "quiz_id")
     private Long quizId;

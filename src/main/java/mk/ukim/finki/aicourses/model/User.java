@@ -9,18 +9,12 @@ import javax.persistence.*;
 @Table(name = "appUsers")
 @Data
 public class User {
-
-    public User() {
-    }
-
-    public User(String username, String password, Role role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-
     @Id
     private String username;
+
+
+    private String name;
+    private String surname;
 
     private String password;
 
@@ -34,9 +28,20 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
+    public User() {
+    }
 
-    public User(String username, String password, String email, String profession, Role role) {
+    public User(String username, String name,String surname,String password, Role role) {
         this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.role = role;
+    }
+    public User(String username, String name,String surname, String password, String email, String profession, Role role) {
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
         this.password = password;
         this.email = email;
         this.proffesion = profession;
