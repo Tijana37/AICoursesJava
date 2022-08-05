@@ -100,20 +100,15 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h2>ЧЕСТИТКИ</h2>
+        <h2 th:if="${passed==true}" >ЧЕСТИТКИ, УСПЕШНО РЕАЛИЗИРАН КВИЗ!</h2>
+        <h2 th:if="${passed==false}" >Немате доволно поени. Обидете се повторно?</h2>
       </div>
 
       <div class="row">
-
-            <div class="pic"><img th:src= "@{../assets/img/certificate.png}" class="img-fluid" alt=""></div>
-
-
-
-      </div>
-
+            <div th:if="${passed==true}" class="pic"><img th:src= "@{../assets/img/certificate.png}" class="img-fluid" alt=""></div>
+          </div>
     </div>
-  </section><!-- End Team Section -->
-
+      </section>
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->

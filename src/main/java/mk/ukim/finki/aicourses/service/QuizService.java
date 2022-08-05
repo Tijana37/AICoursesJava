@@ -12,13 +12,13 @@ public interface QuizService {
 
     Optional<Quiz> findById(Long id);
 
-    Quiz create(String name, Long longitude, String level, Long minPoints);
+    Quiz create(String name, Long longitude, String level, Long minPoints, Long totalTrueAnswers);
 
-    Quiz update(Long id, String name,Long longitude, String level, Long minPoints);
+    Quiz update(Long id, String name, Long longitude, String level, Long minPoints);
 
     void delete(Long id);
 
     Optional<Quiz> findByName(String name);
 
-    boolean isPassed(String[] checkboxValues);
+    boolean isPassed(String quizName, String[] checkboxValues);
 }

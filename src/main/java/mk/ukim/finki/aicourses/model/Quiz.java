@@ -28,11 +28,15 @@ public class Quiz {
     @OneToMany
     private List<QuizQuestion> questions;
 
+    private Long totalTrueAnswers;
 
-    public Quiz(String name, KnowledgeLevel level, Long longitude, Long minPoints) {
+
+
+    public Quiz(String name, KnowledgeLevel level, Long longitude, Long minPoints, Long totalTrueAnswers) {
         this.name = name;
         this.level = level;
         this.longitude = longitude;
         this.minPoints = minPoints;
+        this.totalTrueAnswers = totalTrueAnswers;
     }
 }
