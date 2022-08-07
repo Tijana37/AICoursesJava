@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Base64;
 
 @Controller
 @RequestMapping("/signin")
@@ -34,10 +35,8 @@ public class LoginController {
         User user = null;
         try {
             user = this.userService.login(email, password);
-            System.out.println(user);
             session.setAttribute("user", user);
-
-            return "redirect:/courses";
+            return "redirect:/profile";
         } catch (Exception exception) {
             model.addAttribute("hasError", true);
             model.addAttribute("error", exception.getMessage());

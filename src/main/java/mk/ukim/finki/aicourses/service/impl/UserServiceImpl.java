@@ -8,6 +8,11 @@ import mk.ukim.finki.aicourses.repository.UserRepository;
 import mk.ukim.finki.aicourses.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -19,10 +24,14 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User create(String name, String surname, String username, String password, String email, String profession, Role role) throws RuntimeException {
+    public User create(String name, String surname, String username, String password, String email, String profession, Role role, byte[] profilePhoto) throws RuntimeException, IOException {
         if (userRepository.findByEmail(email)!=null)
             throw new UserExistsException();
-        return userRepository.save(new User(username,name, surname, password, email, profession, role));
+
+        Path newFile = Paths.get(  "src/main/resources/static/assets/userPhotos/" + username+ ".png");
+        Files.write(newFile, profilePhoto);
+
+        return userRepository.save(new User(username,name, surname, password, email, profession, role, profilePhoto));
 
     }
 

@@ -68,16 +68,19 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto" href="/index">Почетна</a></li>
-                <li><a class="nav-link scrollto" href="/courses">Курсeви</a></li>
-                <li><a class="nav-link scrollto " href="/quizes">Квизови</a></li>
+                <li><a class="nav-link scrollto " href="/index">Почетна</a></li>
+                <li><a class="nav-link scrollto " href="/courses">Курсeви</a></li>
+                <li><a class="nav-link scrollto" href="/quizes">Квизови</a></li>
                 <li><a class="nav-link   scrollto active" href="/experiences">Искуства</a></li>
                 <li><a class="nav-link scrollto" href="/forum">Форум</a></li>
-                <li><a class="nav-link scrollto" href="/signin">Најава</a></li>
-                <li><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
+                <li th:if="${session.user==null}"><a class="nav-link scrollto" href="/signin">Најава</a></li>
+                <li th:if="${session.user==null}"><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
+                <li th:if="${session.user!=null}"><a href="/profile"><img id="ItemPreview" style="border-radius: 50%; width: 40px; height: 40px;" th:src= "@{${'../assets/userPhotos/'+session.user.username+'.png'}}"></a></li>
+                <li th:if="${session.user!=null}"><a class="getstarted scrollto" href="/logout">Одјави се</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
+
 
     </div>
 </header><!-- End Header -->
@@ -168,10 +171,12 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
 
-                    <div  class="row hero_btn d-flex justify-content-center justify-content-lg-center" >
-                        <a href="/experience_form" class="col-lg-6" style="color: white ">Сподели искуство</a>
+                    <div  th:if="${session.user!=null}" class="row hero_btn d-flex justify-content-center justify-content-lg-center" >
+                        <a href="/experiences/experience_form" class="col-lg-6" style="color: white ">Сподели искуство</a>
                     </div>
-
+                    <div  th:if="${session.user==null}" class="row hero_btn d-flex justify-content-center justify-content-lg-center" >
+                        <a href="/signin" class="col-lg-6" style="color: white ">Сподели искуство</a>
+                    </div>
                 </div>
             </div>
         </div>

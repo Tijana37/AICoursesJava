@@ -12,7 +12,6 @@ public class User {
     @Id
     private String username;
 
-
     private String name;
     private String surname;
 
@@ -21,6 +20,9 @@ public class User {
     private String email;
 
     private String proffesion;
+
+    @Column(name = "image", length = 100000)
+    private byte[] profilePhoto;
 
     //TODO: implement verification document
     private String verificationPicture;
@@ -38,7 +40,7 @@ public class User {
         this.password = password;
         this.role = role;
     }
-    public User(String username, String name,String surname, String password, String email, String profession, Role role) {
+    public User(String username, String name,String surname, String password, String email, String profession, Role role, byte[] profilePhoto) {
         this.username = username;
         this.name = name;
         this.surname = surname;
@@ -46,5 +48,6 @@ public class User {
         this.email = email;
         this.proffesion = profession;
         this.role = role;
+        this.profilePhoto = profilePhoto;
     }
 }

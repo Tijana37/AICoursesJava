@@ -75,12 +75,14 @@
     <nav id="navbar" class="navbar">
       <ul>
         <li><a class="nav-link scrollto " href="/index">Почетна</a></li>
-        <li><a class="nav-link scrollto" href="/courses">Курсeви</a></li>
-        <li><a class="nav-link scrollto" href="/quizes">Квизови</a></li>
-        <li><a class="nav-link   scrollto" href="/experiences">Искуства</a></li>
+        <li><a class="nav-link scrollto " href="/courses">Курсeви</a></li>
+        <li><a class="nav-link scrollto active" href="/quizes">Квизови</a></li>
+        <li><a class="nav-link  scrollto" href="/experiences">Искуства</a></li>
         <li><a class="nav-link scrollto" href="/forum">Форум</a></li>
-        <li><a class="nav-link scrollto" href="/signin">Најава</a></li>
-        <li><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
+        <li th:if="${session.user==null}"><a class="nav-link scrollto" href="/signin">Најава</a></li>
+        <li th:if="${session.user==null}"><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
+        <li th:if="${session.user!=null}"><a href="/profile"><img id="ItemPreview" style="border-radius: 50%; width: 40px; height: 40px;" th:src= "@{${'../assets/userPhotos/'+session.user.username+'.png'}}"></a></li>
+        <li th:if="${session.user!=null}"><a class="getstarted scrollto" href="/logout">Одјави се</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
@@ -126,8 +128,8 @@
                 </li>
               </ul>
             </div>
-              <div  class="row hero_btn d-flex justify-content-center justify-content-lg-center" style="margin-left: 250px">
-                <button type="submit"  class="col-lg-6" style="color: white ">ЗАВРШИ</button>
+              <div  class="row d-flex justify-content-center justify-content-lg-center" >
+                <button class="col-lg-6 hero_btn" style="color: white ">ЗАВРШИ</button>
               </div>
 
             </form>

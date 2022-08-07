@@ -62,19 +62,21 @@
     <h1 class="logo me-auto"><a href="/courses">ПАМЕТКО</a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
     <a href="courses.html" class="logo me-auto rounded-circle float-left"><img  th:src= "@{../assets/img/logo.png}" alt="logo" class="img-fluid"></a>
-
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto" href="/index">Почетна</a></li>
+        <li><a class="nav-link scrollto " href="/index">Почетна</a></li>
         <li><a class="nav-link scrollto" href="/courses">Курсeви</a></li>
         <li><a class="nav-link scrollto active" href="/quizes">Квизови</a></li>
         <li><a class="nav-link   scrollto" href="/experiences">Искуства</a></li>
         <li><a class="nav-link scrollto" href="/forum">Форум</a></li>
-        <li><a class="nav-link scrollto" href="/signin">Најава</a></li>
-        <li><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
+        <li th:if="${session.user==null}"><a class="nav-link scrollto" href="/signin">Најава</a></li>
+        <li th:if="${session.user==null}"><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
+        <li th:if="${session.user!=null}"><a href="/profile"><img id="ItemPreview" style="border-radius: 50%; width: 40px; height: 40px;" th:src= "@{${'../assets/userPhotos/'+session.user.username+'.png'}}"></a></li>
+        <li th:if="${session.user!=null}"><a class="getstarted scrollto" href="/logout">Одјави се</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
+
 
   </div>
 </header><!-- End Header -->

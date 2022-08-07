@@ -18,4 +18,13 @@ public class Experience {
 
     @ManyToOne
     private User userSharesExp;
+
+    public Experience() {
+    }
+
+    public Experience(String title, String description, User userSharesExp) {
+        this.title = title;
+        this.description = description;
+        this.userSharesExp = userSharesExp;
+    }
 }
