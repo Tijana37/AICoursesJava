@@ -36,8 +36,10 @@ public class QuizController {
     @PostMapping("/certificate")
     public String getCertificate(@RequestParam("checkboxName")String[] checkboxValue,
                                  Model model){
-       if (quizService.isPassed("Вовед во вештачка интелигенција", checkboxValue)){
+        double result = quizService.isPassed("Вовед во вештачка интелигенција", checkboxValue);
+       if (result!=-1.0){
            model.addAttribute("passed", true);
+           model.addAttribute("points", (int)result);
        }
        else {
            model.addAttribute("passed", false);

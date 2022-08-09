@@ -1,15 +1,17 @@
 package mk.ukim.finki.aicourses.service.impl;
 
 import mk.ukim.finki.aicourses.model.Course;
+import mk.ukim.finki.aicourses.model.CoursePart;
 import mk.ukim.finki.aicourses.model.Quiz;
 import mk.ukim.finki.aicourses.model.enums.KnowledgeLevel;
 import mk.ukim.finki.aicourses.model.exceptions.CourseIdException;
-import mk.ukim.finki.aicourses.model.exceptions.QuizIdException;
+import mk.ukim.finki.aicourses.repository.CoursePartRepository;
 import mk.ukim.finki.aicourses.repository.CourseRepository;
 import mk.ukim.finki.aicourses.repository.QuizRepository;
 import mk.ukim.finki.aicourses.service.CourseService;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,10 +19,12 @@ import java.util.Optional;
 public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
+    private final CoursePartRepository coursePartRepository;
     private final QuizRepository quizRepository;
 
-    public CourseServiceImpl(CourseRepository courseRepository, QuizRepository quizRepository) {
+    public CourseServiceImpl(CourseRepository courseRepository, CoursePartRepository coursePartRepository, QuizRepository quizRepository) {
         this.courseRepository = courseRepository;
+        this.coursePartRepository = coursePartRepository;
         this.quizRepository = quizRepository;
     }
 
@@ -56,5 +60,20 @@ public class CourseServiceImpl implements CourseService {
             return course.get();
         }
         else throw new CourseIdException();
+    }
+
+    @Override
+    public Course findByName(String name) {
+        return courseRepository.findByName(name);
+
+    }
+    @Override
+    public Course addCoursePart(String name, String title, String text) {
+        Course c = this.courseRepository.findByName(name);
+        if(c!=null) {
+            c.getParts().add(coursePartRepository.save(new CoursePart(title, text)));
+           c.getParts().stream().forEach(x-> System.out.println(x.getId()));
+        }
+        return c;
     }
 }

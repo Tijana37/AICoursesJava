@@ -23,19 +23,35 @@ public class LoginController {
     }
 
     @GetMapping
-    public String getLogin(Model model){
+    public String getLogin(@RequestParam(required = false) String fromexperience,
+                           @RequestParam(required = false) String fromforum,
+                           Model model){
+        if(fromexperience!=null && fromexperience.equals("True")){
+            model.addAttribute("sentfromexperience", true);
+        }
+        else if(fromforum!=null && fromforum.equals("True")){
+            model.addAttribute("sentfromforum", true);
+        }
         return "signin";
     }
 
     @PostMapping
     public String postLogin(@RequestParam String email,
                             @RequestParam String password,
+                            @RequestParam(required = false) String fromexperience,
+                            @RequestParam(required = false) String fromforum,
                             Model model,
                             HttpSession session){
         User user = null;
         try {
             user = this.userService.login(email, password);
             session.setAttribute("user", user);
+            if(fromexperience!=null && fromexperience.equals("True")){
+                return "redirect:/experiences/experience_form";
+            }
+            if(fromforum!=null && fromforum.equals("True")){
+                return "redirect:/forum/forumQuestion";
+            }
             return "redirect:/profile";
         } catch (Exception exception) {
             model.addAttribute("hasError", true);

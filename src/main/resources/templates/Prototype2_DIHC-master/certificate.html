@@ -104,6 +104,7 @@
 
       <div class="section-title">
         <h2 th:if="${passed==true}" >ЧЕСТИТКИ, УСПЕШНО РЕАЛИЗИРАН КВИЗ!</h2>
+        <h4 th:if="${passed==true}" th:text="${'Број на освоени поени: '+points}"></h4>
         <h2 th:if="${passed==false}" >Немате доволно поени. Обидете се повторно?</h2>
       </div>
 
@@ -132,8 +133,9 @@
     </div>
   </div>
 
-
-
+  <div class="container footer-bottom clearfix">
+    <div class="row justify-content-center">Креирано од Тијана Атанасовска (ФИНКИ - 2022)</div>
+  </div>
 </footer>
 
 <div id="preloader"></div>

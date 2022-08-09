@@ -20,5 +20,5 @@ public interface QuizService {
 
     Optional<Quiz> findByName(String name);
 
-    boolean isPassed(String quizName, String[] checkboxValues);
+    double isPassed(String quizName, String[] checkboxValues);
 }

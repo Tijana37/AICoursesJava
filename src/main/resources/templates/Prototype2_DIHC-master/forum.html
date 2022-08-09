@@ -98,20 +98,24 @@
       <div class="section-title">
         <h2>ФОРУМ</h2>
       </div>
+      <div  th:if="${published==true}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Успешнo поставено прашање!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
 
       <div class="faq-list">
         <ul>
-          <li data-aos="fade-up" data-aos-delay="100">
+          <li class="row" th:each="q: ${questions}" data-aos="fade-up" data-aos-delay="100">
             <i class="bx bx-help-circle icon-help"></i>
-            <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Неуспешна инсталација на PyCharm<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                <h6>Kaтегорија: <br><div id="kategorija">Програмски околини</div></h6>
-                <h6>Детали:</h6>
-                <div> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras erat turpis, hendrerit a sagittis nec, fringilla commodo ligula. Suspendisse pharetra commodo neque eget fermentum. Nam eu magna pretium, facilisis turpis sed, hendrerit ante. Nam condimentum vestibulum leo mollis eleifend. Curabitur varius ipsum quis eros auctor dignissim. Nunc pulvinar libero et ex tincidunt interdum. Phasellus vel ligula non neque venenatis sagittis. Donec vel felis ut sapien vulputate rhoncus sed at massa. Sed pharetra vitae diam sed auctor. </div>
-                <br>
-                <h6>Автор:</h6>
-                <a href="#" >Росалинда Роси</a>
-                <br>
+            <a th:text="${q.title}" data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1"><i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+            <div class="collapse show" data-bs-parent=".faq-list">
+              <h6>Kaтегорија: <br><div id="kategorija" th:text="${q.category}"></div></h6>
+              <h6>Детали:</h6>
+              <div th:text="${q.description}"> </div>
+              <br>
+              <h6 >Автор:</h6>
+              <a th:text="${q.userAsks.username}" ></a>
+              <br>
               <div  class="row hero_btn d-flex justify-content-center justify-content-lg-center" style="width:250px;">
                 <a href="" class="col-lg-12" style="color: white ">Внеси одговор</a>
               </div>
@@ -121,43 +125,6 @@
 
             </div>
           </li>
-
-          <li data-aos="fade-up" data-aos-delay="200">
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-              </p>
-            </div>
-          </li>
-
-          <li data-aos="fade-up" data-aos-delay="300">
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-              </p>
-            </div>
-          </li>
-
-          <li data-aos="fade-up" data-aos-delay="400">
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
-              </p>
-            </div>
-          </li>
-
-          <li data-aos="fade-up" data-aos-delay="500">
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-              </p>
-            </div>
-          </li>
-
         </ul>
       </div>
 
@@ -174,16 +141,22 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-
-          <div  class="row hero_btn d-flex justify-content-center justify-content-lg-center" >
-            <a href="" class="col-lg-6" style="color: white ">Објави</a>
+          <div  th:if="${session.user!=null}" class="row hero_btn d-flex justify-content-center justify-content-lg-center" >
+            <a href="/forum/forumQuestion" class="col-lg-6" style="color: white ">Постави прашање</a>
           </div>
+          <div  th:if="${session.user==null}" class="row hero_btn d-flex justify-content-center justify-content-lg-center" >
+            <a href="/signin?fromforum=True" class="col-lg-6" style="color: white ">Постави прашање</a>
+          </div>
+
 
         </div>
       </div>
     </div>
   </div>
 
+  <div class="container footer-bottom clearfix">
+    <div class="row justify-content-center">Креирано од Тијана Атанасовска (ФИНКИ - 2022)</div>
+  </div>
 </footer>
 
 <div id="preloader"></div>

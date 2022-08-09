@@ -134,7 +134,11 @@
               Учи, решавај, поставувај прашања и најважно - забавувај се!
             </p>
           </div>
+          <br>
         </div>
+        <div class="row"> <div class="d-flex justify-content-center justify-content-lg-start">
+          <a  class="col-lg-7 offset-5 pt-4 pt-lg-0 btn-get-started scrollto" href="/documentation" >Запознавање со платформата</a>
+        </div></div>
 
       </div>
     </section><!-- End About Us Section -->
@@ -149,8 +153,12 @@
         <div class="row justify-content-center">
           <div class="col-lg-6">
             <h4>Претплати се за неделни известувања</h4>
-            <div  th:if="${subscribe}" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div  th:if="${subscribe==true}" class="alert alert-success alert-dismissible fade show" role="alert">
               <strong>Успешно се претплативте!</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div  th:if="${subscribe==false}"  class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Ве молиме пополнете го полето!</strong>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <form action="/subscribe" method="post">
@@ -158,13 +166,13 @@
             </form>
           </div>
         </div>
-      </div>
+       </div>
+
     </div>
 
 
     <div class="container footer-bottom clearfix">
-
-
+      <div class="row justify-content-center">Креирано од Тијана Атанасовска (ФИНКИ - 2022)</div>
     </div>
   </footer><!-- End Footer -->
 

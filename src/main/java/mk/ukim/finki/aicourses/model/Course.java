@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import mk.ukim.finki.aicourses.model.enums.KnowledgeLevel;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,11 +30,17 @@ public class Course {
     @ManyToOne
     private Quiz suggestedQuiz; //when finished the Course
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<CoursePart> parts;
+
+
     public Course(String name, KnowledgeLevel level, Long longitude, String teacher, Quiz suggestedQuiz) {
         this.name = name;
         this.level = level;
         this.longitude = longitude;
         this.teacher = teacher;
         this.suggestedQuiz = suggestedQuiz;
+        this.parts = new ArrayList<>();
     }
+
 }

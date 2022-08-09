@@ -52,7 +52,7 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public boolean isPassed(String quizName, String[] checkboxValues) {
+    public double isPassed(String quizName, String[] checkboxValues) {
         int total = 0;
         Quiz q = findByName(quizName).get();
         for(String s: checkboxValues){
@@ -69,7 +69,7 @@ public class QuizServiceImpl implements QuizService {
         }
 
         if (total*1.0/(q.getTotalTrueAnswers())*100 > q.getMinPoints())
-            return true;
-        return false;
+            return total*1.0/(q.getTotalTrueAnswers())*100 ;
+        return -1.0;
     }
 }

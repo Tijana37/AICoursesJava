@@ -100,6 +100,10 @@
             <div class="section-title">
                 <h2>Искуства</h2>
             </div>
+            <div  th:if="${published==true}" class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Успешнo споделено искуство!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
 
             <div   class="row">
                 <div th:each="e: ${experiences}" class="col-lg-6">
@@ -140,13 +144,16 @@
                         <a href="/experiences/experience_form" class="col-lg-6" style="color: white ">Сподели искуство</a>
                     </div>
                     <div  th:if="${session.user==null}" class="row hero_btn d-flex justify-content-center justify-content-lg-center" >
-                        <a href="/signin" class="col-lg-6" style="color: white ">Сподели искуство</a>
+                        <a href="/signin?fromexperience=True" class="col-lg-6" style="color: white ">Сподели искуство</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="container footer-bottom clearfix">
+        <div class="row justify-content-center">Креирано од Тијана Атанасовска (ФИНКИ - 2022)</div>
+    </div>
 
 
 </footer>

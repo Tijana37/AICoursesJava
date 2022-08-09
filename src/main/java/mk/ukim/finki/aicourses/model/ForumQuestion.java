@@ -2,11 +2,13 @@ package mk.ukim.finki.aicourses.model;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class ForumQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,5 +22,12 @@ public class ForumQuestion {
     private String category;
 
     @ManyToOne
-    private User userAnswers;
+    private User userAsks;
+
+    public ForumQuestion(String title, String description, String category, User userAsks) {
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.userAsks = userAsks;
+    }
 }

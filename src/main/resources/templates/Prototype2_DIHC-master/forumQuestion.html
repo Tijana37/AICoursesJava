@@ -30,18 +30,22 @@
 
     <!-- Template Main CSS File -->
     <link th:rel="stylesheet" th:href="@{../assets/css/style.css}"/>
-    <style>
+
+    <style >
+
         #course_hero{
             width: 100%;
             height: 6vh;
             background: #37517e;
         }
         .hero_btn {
+            width: 20%;
+
             font-family: "Jost", sans-serif;
             font-weight: 500;
             font-size: 16px;
             letter-spacing: 1px;
-            display: inline-block;
+            display: block;
             padding: 5px 14px 6px 14px;
             border-radius: 50px;
             transition: 0.5s;
@@ -50,13 +54,16 @@
             background: #47b2e4;
         }
     </style>
-    <!-- Template Main CSS File -->
-    <link href="../../static/assets/css/style.css" rel="stylesheet">
-
+    <!-- =======================================================
+    * Template Name: Arsha - v4.7.1
+    * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 </head>
 
-<body>
 
+<body>
 
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top ">
@@ -64,15 +71,15 @@
 
         <h1 class="logo me-auto"><a href="/courses">ПАМЕТКО</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="/courses" class="logo me-auto rounded-circle float-left"><img th:src= "@{../assets/img/logo.png}" alt="logo" class="img-fluid"></a>
+        <a href="/courses" class="logo me-auto rounded-circle float-left"><img  th:src= "@{../assets/img/logo.png}"  alt="logo" class="img-fluid"></a>
 
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto " href="/index">Почетна</a></li>
-                <li><a class="nav-link scrollto " href="/courses">Курсeви</a></li>
+                <li><a class="nav-link scrollto" href="/courses">Курсeви</a></li>
                 <li><a class="nav-link scrollto" href="/quizes">Квизови</a></li>
-                <li><a class="nav-link   scrollto active" href="/experiences">Искуства</a></li>
-                <li><a class="nav-link scrollto" href="/forum">Форум</a></li>
+                <li><a class="nav-link   scrollto " href="/experiences">Искуства</a></li>
+                <li><a class="nav-link scrollto active" href="/forum">Форум</a></li>
                 <li th:if="${session.user==null}"><a class="nav-link scrollto" href="/signin">Најава</a></li>
                 <li th:if="${session.user==null}"><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
                 <li th:if="${session.user!=null}"><a href="/profile"><img id="ItemPreview" style="border-radius: 50%; width: 40px; height: 40px;" th:src= "@{${'../assets/userPhotos/'+session.user.username+'.png'}}"></a></li>
@@ -84,7 +91,6 @@
 
     </div>
 </header><!-- End Header -->
-
 
 <!-- ======= Hero Section ======= -->
 <section id="course_hero" class="d-flex align-items-center">
@@ -98,65 +104,56 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2>Искуства</h2>
+                <h2>Постави прашање</h2>
             </div>
+            <div  th:if="${error==true}" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong th:text="${errorMessage}"></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/forum/forumQuestion}" method="post" >
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-file"></i></div>
+                        <h4><a href="">Наслов</a></h4>
+                        <div class="form-group row">
+                            <div class="col-sm-9" style="margin-right: 10px">
+                                <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Внесете наслов">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-file"></i></div>
+                        <h4><a href="">Категорија</a></h4>
+                        <div class="form-group row">
+                            <div class="col-sm-9" style="margin-right: 10px">
+                                <input type="text" class="form-control form-control-lg" id="category" name="category" placeholder="Внесете категорија">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-tachometer"></i></div>
+                        <h4><a href="">Опишете го проблемот</a></h4>
 
-            <div class="row">
-
+                        <div class="form-group row">
+                            <textarea id="description" name="description" class="col-lg-9 form-control form-control-lg " rows="5" style="width: 870px"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <br>
                 <div class="col-lg-6">
-                    <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="pic"><img th:src= "@{../assets/img/team/team-2.jpg}" class="img-fluid" alt=""></div>
-                        <div class="member-info">
-                            <h4>Марија Манева</h4>
-                            <span>Вработена во Google</span>
-                            <p>Како до вработување во Google?</p>
-                            <div class="social">
-                                <a href=""><i class="ri-twitter-fill"></i></a>
-                                <a href=""><i class="ri-facebook-fill"></i></a>
-                                <a href=""><i class="ri-instagram-fill"></i></a>
-                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                            </div>
-                        </div>
+
+                    <div  class="row hero_btn d-flex justify-content-center justify-content-lg-center" >
+                        <button type="submit" style=" background-color: transparent; border: none; color:white;">Објави прашање</button>
                     </div>
                 </div>
+            </form>
 
-                <div class="col-lg-6 mt-4 mt-lg-0">
-                    <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="pic"><img th:src= "@{../assets/img/team/team-1.jpg}"  class="img-fluid" alt=""></div>
-                        <div class="member-info">
-                            <h4>Петар Петров</h4>
-                            <span>Професор на ФИНКИ</span>
-                            <p>Искуството како професор на ФИНКИ</p>
-                            <div class="social">
-                                <a href=""><i class="ri-twitter-fill"></i></a>
-                                <a href=""><i class="ri-facebook-fill"></i></a>
-                                <a href=""><i class="ri-instagram-fill"></i></a>
-                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 mt-4">
-                    <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="pic"><img th:src= "@{../assets/img/team/team-3.jpg}"  class="img-fluid" alt=""></div>
-                        <div class="member-info">
-                            <h4>Андреј Ставров</h4>
-                            <span>Консултант за ВИ</span>
-                            <p>Не плашете се од нови предизвици</p>
-                            <div class="social">
-                                <a href=""><i class="ri-twitter-fill"></i></a>
-                                <a href=""><i class="ri-facebook-fill"></i></a>
-                                <a href=""><i class="ri-instagram-fill"></i></a>
-                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
 
         </div>
     </section><!-- End Team Section -->
@@ -165,29 +162,15 @@
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
-
-    <div class="footer-newsletter">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-
-                    <div  th:if="${session.user!=null}" class="row hero_btn d-flex justify-content-center justify-content-lg-center" >
-                        <a href="/experiences/experience_form" class="col-lg-6" style="color: white ">Сподели искуство</a>
-                    </div>
-                    <div  th:if="${session.user==null}" class="row hero_btn d-flex justify-content-center justify-content-lg-center" >
-                        <a href="/signin" class="col-lg-6" style="color: white ">Сподели искуство</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container footer-bottom clearfix">
+        <div class="row justify-content-center">Креирано од Тијана Атанасовска (ФИНКИ - 2022)</div>
     </div>
-
-
-
 </footer>
 
 <div id="preloader"></div>
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
 
 <!-- Vendor JS Files -->
 <script th:src="@{../assets/vendor/aos/aos.js}"></script>
@@ -200,6 +183,10 @@
 
 <!-- Template Main JS File -->
 <script th:src="@{../assets/js/main.js}"></script>
+
+
+
+
 </body>
 
 </html>
