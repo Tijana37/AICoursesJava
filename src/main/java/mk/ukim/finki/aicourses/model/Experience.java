@@ -2,11 +2,13 @@ package mk.ukim.finki.aicourses.model;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,9 +20,6 @@ public class Experience {
 
     @ManyToOne
     private User userSharesExp;
-
-    public Experience() {
-    }
 
     public Experience(String title, String description, User userSharesExp) {
         this.title = title;

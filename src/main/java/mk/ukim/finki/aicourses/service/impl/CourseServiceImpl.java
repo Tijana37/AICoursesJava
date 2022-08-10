@@ -11,13 +11,11 @@ import mk.ukim.finki.aicourses.repository.QuizRepository;
 import mk.ukim.finki.aicourses.service.CourseService;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CourseServiceImpl implements CourseService {
-
     private final CourseRepository courseRepository;
     private final CoursePartRepository coursePartRepository;
     private final QuizRepository quizRepository;
@@ -49,13 +47,22 @@ public class CourseServiceImpl implements CourseService {
     //TODO:  implement update method
     @Override
     public Course update(Long id, String name, Long longitude, String teacher, String level) {
-        return null;
+        Optional<Course> course = courseRepository.findById(id);
+        if (course.isPresent()) {
+            course.get().setName(name);
+            course.get().setLongitude(longitude);
+            course.get().setTeacher(teacher);
+            course.get().setLevel(KnowledgeLevel.valueOf(level));
+            return courseRepository.save(course.get());
+        }
+        else throw new CourseIdException();
+
     }
 
     @Override
     public Course delete(Long id) {
         Optional<Course> course = courseRepository.findById(id);
-        if(course.isPresent()) {
+        if (course.isPresent()) {
             courseRepository.deleteById(id);
             return course.get();
         }
@@ -65,14 +72,13 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course findByName(String name) {
         return courseRepository.findByName(name);
-
     }
+
     @Override
     public Course addCoursePart(String name, String title, String text) {
         Course c = this.courseRepository.findByName(name);
-        if(c!=null) {
+        if (c != null) {
             c.getParts().add(coursePartRepository.save(new CoursePart(title, text)));
-           c.getParts().stream().forEach(x-> System.out.println(x.getId()));
         }
         return c;
     }

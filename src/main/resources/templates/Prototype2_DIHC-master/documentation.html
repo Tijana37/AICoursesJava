@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -14,11 +14,9 @@
     <link th:rel="apple-touch-icon" th:href="@{../assets/img/apple-touch-icon.png}"/>
     <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 
-    <!-- Favicons -->
-
-
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link th:rel="stylesheet" th:href="@{../assets/vendor/bootstrap/css/bootstrap.min.css}"/>
@@ -34,11 +32,12 @@
     <link th:rel="stylesheet" th:href="@{../assets/css/style.css}"/>
 
     <style>
-        #course_hero{
+        #course_hero {
             width: 100%;
             height: 6vh;
             background: #37517e;
         }
+
         .hero_btn {
             font-family: "Jost", sans-serif;
             font-weight: 500;
@@ -63,8 +62,8 @@
 
         <h1 class="logo me-auto"><a href="courses">ПАМЕТКО</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="/courses" class="logo me-auto rounded-circle float-left"><img th:src= "@{../assets/img/logo.png}" alt="logo" class="img-fluid"></a>
-
+        <a href="/courses" class="logo me-auto rounded-circle float-left"><img th:src="@{../assets/img/logo.png}"
+                                                                               alt="logo" class="img-fluid"></a>
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto active" href="/index">Почетна</a></li>
@@ -74,12 +73,14 @@
                 <li><a class="nav-link scrollto" href="/forum">Форум</a></li>
                 <li th:if="${session.user==null}"><a class="nav-link scrollto" href="/signin">Најава</a></li>
                 <li th:if="${session.user==null}"><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
-                <li th:if="${session.user!=null}"><a href="/profile"><img id="ItemPreview" style="border-radius: 50%; width: 40px; height: 40px;" th:src= "@{${'../assets/userPhotos/'+session.user.username+'.png'}}"></a></li>
+                <li th:if="${session.user!=null}"><a href="/profile"><img id="ItemPreview"
+                                                                          style="border-radius: 50%; width: 40px; height: 40px;"
+                                                                          th:src="@{${'../assets/userPhotos/'+session.user.username+'.png'}}"></a>
+                </li>
                 <li th:if="${session.user!=null}"><a class="getstarted scrollto" href="/logout">Одјави се</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-
 
     </div>
 </header><!-- End Header -->
@@ -90,7 +91,7 @@
 
 <main id="main">
 
-    <!-- ======= AI INTRO ======= -->
+    <!-- ======= documentation ======= -->
     <section id="why-us" class="why-us section-bg">
         <div class="container-fluid" data-aos="fade-up">
 
@@ -99,7 +100,8 @@
                 <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
                     <div class="content">
-                        <h3> <strong>Добредојдовте на Паметко - првата платформа за вештачка интелигенција на Македонски јазик!</strong></h3>
+                        <h3><strong>Добредојдовте на Паметко - првата платформа за вештачка интелигенција на Македонски
+                            јазик!</strong></h3>
                         <p>Едно место за сите почетници во областа, ентузијасти и искусни корисници.<br>
                             Различните секции нудат спектар од услуги. Секоја од нив е објасната во следните делови:
                         </p>
@@ -108,62 +110,109 @@
                     <div class="accordion-list">
                         <ul>
                             <li>
-                                <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span>Регистрирање <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span>Регистрирање
+                                    <i class="bx bx-chevron-down icon-show"></i><i
+                                            class="bx bx-chevron-up icon-close"></i></a>
                                 <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
                                     <p>
-                                        За да се регистрирате на системот потребно е задолжително да внесете Име, Презииме, Корисничко име, Е-маил и Лозинка. Полињата за професија и профилна фотографија се опционални. Откако ќе ги пополнете кликнете на копчето Регистрирај се. Вашиот профил ќе биде креиран и ќе бидете пренасочени кон него.
+                                        За да се регистрирате на системот потребно е задолжително да внесете Име,
+                                        Презииме, Корисничко име, Е-маил и Лозинка. Полињата за професија и профилна
+                                        фотографија се опционални. Откако ќе ги пополнете кликнете на копчето
+                                        Регистрирај се. Вашиот профил ќе биде креиран и ќе бидете пренасочени кон него.
                                     </p>
                                 </div>
                             </li>
 
                             <li>
-                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span>Најава <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span>Најава
+                                    <i class="bx bx-chevron-down icon-show"></i><i
+                                            class="bx bx-chevron-up icon-close"></i></a>
                                 <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
                                     <p>
-                                        За да се најавите потребно е да ја внесете Е-маил адресата и Лозинката со кои претходно сте се регистрирале. При кликнување на копчето Најави се, ќе бидете пренасочени кон вашиот профил каде се поставени основните информации.
-                                        Доколку сакате да се одјавите кликнете на копчето Одјави се, горе десно во навигациското мени.
+                                        За да се најавите потребно е да ја внесете Е-маил адресата и Лозинката со кои
+                                        претходно сте се регистрирале. При кликнување на копчето Најави се, ќе бидете
+                                        пренасочени кон вашиот профил каде се поставени основните информации.
+                                        Доколку сакате да се одјавите кликнете на копчето Одјави се, горе десно во
+                                        навигациското мени.
                                     </p>
                                 </div>
                             </li>
 
                             <li>
-                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Курсеви<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span>
+                                    Курсеви<i class="bx bx-chevron-down icon-show"></i><i
+                                            class="bx bx-chevron-up icon-close"></i></a>
                                 <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
                                     <p>
-                                        Во делот за Курсеви се излистани сите моментално активни курсеви. За секој од нив се прикажани различни информации. Изберете го оној кој најмногу одговара на вашиот профил и вашите желби за идни знаења. Откако добро ќе ја поминете материјата, можете да го тестирате своето знаење со кликање на копчето Тестирај го знаењето.
-                                        Истото ве носи кон избран квиз соодветен за овој курс. Овие квизови можете да ги решавата и без претходно проследен курс, со директен пристап преку полето Квизови во навигациското мени.
-                                        Доколку сакате да предложите нов курс за реализација, пополнето го полето и кликнете Предложи нов курс.
+                                        Во делот за Курсеви се излистани сите моментално активни курсеви. За секој од
+                                        нив се прикажани различни информации. Изберете го оној кој најмногу одговара на
+                                        вашиот профил и вашите желби за идни знаења. Откако добро ќе ја поминете
+                                        материјата, можете да го тестирате своето знаење со кликање на копчето Тестирај
+                                        го знаењето.
+                                        Истото ве носи кон избран квиз соодветен за овој курс. Овие квизови можете да ги
+                                        решавата и без претходно проследен курс, со директен пристап преку полето
+                                        Квизови во навигациското мени.
+                                        Доколку сакате да предложите нов курс за реализација, пополнето го полето и
+                                        кликнете Предложи нов курс.
                                     </p>
                                 </div>
                             </li>
 
                             <li>
-                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-4" class="collapsed"><span>04</span> Квизови<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-4" class="collapsed"><span>04</span>
+                                    Квизови<i class="bx bx-chevron-down icon-show"></i><i
+                                            class="bx bx-chevron-up icon-close"></i></a>
                                 <div id="accordion-list-4" class="collapse" data-bs-parent=".accordion-list">
                                     <p>
-                                        Во делот за Квизови се излистани сите моментално активни квизови. За секој од нив се прикажани различни информации. Изберете го оној кој најмногу одговара на вашиот профил и вашите компетенции кои сакате да ги тестирате.
-                                        За секое прашање има повеќе понудени одговори. Бројот на точни одговори НЕ е ограничен! Најдолу е прикажан прогрес бар со кој може да го следете вашиот моментален прогрес, односно бројот на одговорени прашања од вкупно. Откако ќе сте сигурни во вашите одговори кликнете на копчето Заврши. Ќе бидете пренасочени кон друга страница на која
-                                        се прикажани освоените поени. Доколку бројот на освоени поени е поголем од минималниот број за соодветниот квиз, се стекнувате со Сертификат. Истиот може да го преземете со кликање на копчето преземи.
+                                        Во делот за Квизови се излистани сите моментално активни квизови. За секој од
+                                        нив се прикажани различни информации. Изберете го оној кој најмногу одговара на
+                                        вашиот профил и вашите компетенции кои сакате да ги тестирате.
+                                        За секое прашање има повеќе понудени одговори. Бројот на точни одговори НЕ е
+                                        ограничен! Најдолу е прикажан прогрес бар со кој може да го следете вашиот
+                                        моментален прогрес, односно бројот на одговорени прашања од вкупно. Откако ќе
+                                        сте сигурни во вашите одговори кликнете на копчето Заврши. Ќе бидете пренасочени
+                                        кон друга страница на која
+                                        се прикажани освоените поени. Доколку бројот на освоени поени е поголем од
+                                        минималниот број за соодветниот квиз, се стекнувате со Сертификат. Истиот може
+                                        да го преземете со кликање на копчето преземи.
                                     </p>
                                 </div>
                             </li>
 
                             <li>
-                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-5" class="collapsed"><span>05</span> Искуства<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-5" class="collapsed"><span>05</span>
+                                    Искуства<i class="bx bx-chevron-down icon-show"></i><i
+                                            class="bx bx-chevron-up icon-close"></i></a>
                                 <div id="accordion-list-5" class="collapse" data-bs-parent=".accordion-list">
                                     <p>
-                                        Областа со искуства претставува простор за споделување на разни настани поврзани со областа на Вештачка интелигенција. Овде може да научете многу нови работи за вработување, начин на размислување, каде да барате нови можности...
-                                        Доколку сакате да споделите ново искуство кликнете на копчето Сподели искуство. Доколку не сте најавени, ќе бидете пренасочени кон Најава. Откако ќе се најавите, ќе бидете пренасочени кон формата за споделување искуство. Потребно е да пополнето Наслов и да го опишете вашето искуство. За да споделите кликнете на Сподели. Ќе бидете пренасочени кон првичната страница со сите споделени искуства.
+                                        Областа со искуства претставува простор за споделување на разни настани поврзани
+                                        со областа на Вештачка интелигенција. Овде може да научете многу нови работи за
+                                        вработување, начин на размислување, каде да барате нови можности...
+                                        Доколку сакате да споделите ново искуство кликнете на копчето Сподели искуство.
+                                        Доколку не сте најавени, ќе бидете пренасочени кон Најава. Откако ќе се
+                                        најавите, ќе бидете пренасочени кон формата за споделување искуство. Потребно е
+                                        да пополнето Наслов и да го опишете вашето искуство. За да споделите кликнете на
+                                        Сподели. Ќе бидете пренасочени кон првичната страница со сите споделени
+                                        искуства.
                                     </p>
                                 </div>
                             </li>
 
                             <li>
-                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-6" class="collapsed"><span>06</span> Форум<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                <a data-bs-toggle="collapse" data-bs-target="#accordion-list-6" class="collapsed"><span>06</span>
+                                    Форум<i class="bx bx-chevron-down icon-show"></i><i
+                                            class="bx bx-chevron-up icon-close"></i></a>
                                 <div id="accordion-list-6" class="collapse" data-bs-parent=".accordion-list">
                                     <p>
-                                        Форумот претставува простор за споделување на разни прашања поврзани со областа на Вештачка интелигенција. Овде може да поставите прашања или да одговорите на веќе поставените.
-                                        Доколку сакате да поставите ново прашање кликнете на копчето Постави прашање. Доколку не сте најавени, ќе бидете пренасочени кон Најава. Откако ќе се најавите, ќе бидете пренасочени кон формата за прашања. Потребно е да пополнето Наслов, Категорија и да го опишете вашиот проблем. За да објавите кликнете на Објави прашање. Ќе бидете пренасочени кон првичната страница со сите поставени прашања.
+                                        Форумот претставува простор за споделување на разни прашања поврзани со областа
+                                        на Вештачка интелигенција. Овде може да поставите прашања или да одговорите на
+                                        веќе поставените.
+                                        Доколку сакате да поставите ново прашање кликнете на копчето Постави прашање.
+                                        Доколку не сте најавени, ќе бидете пренасочени кон Најава. Откако ќе се
+                                        најавите, ќе бидете пренасочени кон формата за прашања. Потребно е да пополнето
+                                        Наслов, Категорија и да го опишете вашиот проблем. За да објавите кликнете на
+                                        Објави прашање. Ќе бидете пренасочени кон првичната страница со сите поставени
+                                        прашања.
                                     </p>
                                 </div>
                             </li>
@@ -172,15 +221,18 @@
 
                 </div>
 
-                <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("static/assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+                <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
+                     style='background-image: url("static/assets/img/why-us.png");' data-aos="zoom-in"
+                     data-aos-delay="150">&nbsp;
+                </div>
             </div>
-            <div  class="row hero_btn d-flex justify-content-center justify-content-lg-start" style="width: 250px; margin-left: 300px">
-                <a href="/index"  style="color: white">Врати се назад</a>
+            <div class="row hero_btn d-flex justify-content-center justify-content-lg-start"
+                 style="width: 250px; margin-left: 300px">
+                <a href="/index" style="color: white">Врати се назад</a>
             </div>
 
         </div>
     </section><!-- End Why Us Section -->
-
 
 
 </main><!-- End #main -->
@@ -191,7 +243,8 @@
     </div>
 </footer><!-- End Footer -->
 <div id="preloader"></div>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
 <script th:src="@{../assets/vendor/aos/aos.js}"></script>

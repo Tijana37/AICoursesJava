@@ -3,7 +3,7 @@ package mk.ukim.finki.aicourses.service.impl;
 import mk.ukim.finki.aicourses.model.Experience;
 import mk.ukim.finki.aicourses.model.ForumQuestion;
 import mk.ukim.finki.aicourses.model.User;
-import mk.ukim.finki.aicourses.model.exceptions.ExperienceFormEmptyException;
+import mk.ukim.finki.aicourses.model.exceptions.ExperienceNotFoundException;
 import mk.ukim.finki.aicourses.model.exceptions.ForumQuestionEmptyException;
 import mk.ukim.finki.aicourses.model.exceptions.UserNotExistsException;
 import mk.ukim.finki.aicourses.repository.ForumQuestionRepository;
@@ -34,22 +34,22 @@ public class ForumQuestionServiceImpl implements ForumQuestionService {
 
     @Override
     public ForumQuestion create(String title, String category, String description, User userAsksQ) {
-        if(userAsksQ==null){
+        if (userAsksQ == null) {
             throw new UserNotExistsException("Ве молиме најавете се пред да продолжите!");
         }
-        if(title.isEmpty()&& category.isEmpty() && description.isEmpty()){
+        if (title.isEmpty() && category.isEmpty() && description.isEmpty()) {
             throw new ForumQuestionEmptyException("Ве молиме пополнете ги трите полиња!");
         }
-        if(title.isEmpty()){
+        if (title.isEmpty()) {
             throw new ForumQuestionEmptyException("Ве молиме пополнете го полето за наслов!");
         }
-        if(category.isEmpty()){
+        if (category.isEmpty()) {
             throw new ForumQuestionEmptyException("Ве молиме пополнете го полето за категорија!");
         }
-        if(description.isEmpty()){
+        if (description.isEmpty()) {
             throw new ForumQuestionEmptyException("Ве молиме пополнете го полето за опис!");
         }
-        return forumQuestionRepository.save(new ForumQuestion(title, description,category, userAsksQ));
+        return forumQuestionRepository.save(new ForumQuestion(title, description, category, userAsksQ));
     }
 
 
@@ -60,7 +60,10 @@ public class ForumQuestionServiceImpl implements ForumQuestionService {
 
     @Override
     public void delete(Long id) {
-        forumQuestionRepository.delete(forumQuestionRepository.findById(id).get());
-
+        Optional<ForumQuestion> q = forumQuestionRepository.findById(id);
+        if(q.isPresent()){
+            forumQuestionRepository.delete(q.get());
+        }
+        else throw new ExperienceNotFoundException("The form id does not exist");
     }
 }

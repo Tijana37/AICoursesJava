@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -12,11 +11,10 @@
     <link th:rel="icon" th:href="@{../assets/img/favicon.png}"/>
     <link th:rel="apple-touch-icon" th:href="@{../assets/img/apple-touch-icon.png}"/>
     <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-    <!-- Favicons -->
-
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link th:rel="stylesheet" th:href="@{../assets/vendor/bootstrap/css/bootstrap.min.css}"/>
@@ -31,11 +29,12 @@
     <!-- Template Main CSS File -->
     <link th:rel="stylesheet" th:href="@{../assets/css/style.css}"/>
     <style>
-        #course_hero{
+        #course_hero {
             width: 100%;
             height: 6vh;
             background: #37517e;
         }
+
         .hero_btn {
             font-family: "Jost", sans-serif;
             font-weight: 500;
@@ -55,14 +54,14 @@
 </head>
 
 <body>
-
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
         <h1 class="logo me-auto"><a href="courses">ПАМЕТКО</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="courses" class="logo me-auto rounded-circle float-left"><img  th:src= "@{../assets/img/logo.png}" alt="logo" class="img-fluid"></a>
+        <a href="courses" class="logo me-auto rounded-circle float-left"><img th:src="@{../assets/img/logo.png}"
+                                                                              alt="logo" class="img-fluid"></a>
 
         <nav id="navbar" class="navbar">
             <ul>
@@ -73,7 +72,10 @@
                 <li><a class="nav-link scrollto" href="/forum">Форум</a></li>
                 <li th:if="${session.user==null}"><a class="nav-link scrollto" href="/signin">Најава</a></li>
                 <li th:if="${session.user==null}"><a class="getstarted scrollto" href="/register">Регистрирање</a></li>
-                <li th:if="${session.user!=null}"><a href="/profile"><img id="ItemPreview" style="border-radius: 50%; width: 40px; height: 40px;" th:src= "@{${'../assets/userPhotos/'+session.user.username+'.png'}}"></a></li>
+                <li th:if="${session.user!=null}"><a href="/profile"><img id="ItemPreview"
+                                                                          style="border-radius: 50%; width: 40px; height: 40px;"
+                                                                          th:src="@{${'../assets/userPhotos/'+session.user.username+'.png'}}"></a>
+                </li>
                 <li th:if="${session.user!=null}"><a class="getstarted scrollto" href="/logout">Одјави се</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
@@ -82,33 +84,30 @@
     </div>
 </header><!-- End Header -->
 
-
-
 <!-- ======= Hero Section ======= -->
 <section id="course_hero" class="d-flex align-items-center">
 </section><!-- End Hero -->
 
-
 <main id="main">
-    <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq section-bg">
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
                 <h2>Најава</h2>
             </div>
-            <div  th:if="${sentfromexperience==true}" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div th:if="${sentfromexperience==true}" class="alert alert-warning alert-dismissible fade show"
+                 role="alert">
                 <strong>Ве молиме најавете се пред да продолжите!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
-            <!-- ======= Contact Section ======= -->
             <section id="contact" class="contact">
                 <div class="container" data-aos="fade-up">
 
                     <div class="row">
                         <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-                            <form th:if="${sentfromexperience==null&&sentfromforum==null}" th:action="@{/signin}"  method="post" role="form" class="php-email-form">
+                            <form th:if="${sentfromexperience==null&&sentfromforum==null}" th:action="@{/signin}"
+                                  method="post" role="form" class="php-email-form">
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
@@ -118,7 +117,8 @@
                                     <br>
                                     <div class="form-group col-md-6">
                                         <label for="password">Лозинка</label>
-                                        <input type="password" class="form-control" name="password" id="password" required>
+                                        <input type="password" class="form-control" name="password" id="password"
+                                               required>
                                     </div>
                                 </div>
 
@@ -127,11 +127,14 @@
                                     <div class="error-message"></div>
                                     <div class="sent-message">Your message has been sent. Thank you!</div>
                                 </div>
-                                <div class="text-center"><button type="submit">Најави се</button></div>
+                                <div class="text-center">
+                                    <button type="submit">Најави се</button>
+                                </div>
                             </form>
                         </div>
                         <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-                            <form th:if="${sentfromexperience==true}"  th:action="@{/signin?fromexperience=True}"  method="post" role="form" class="php-email-form">
+                            <form th:if="${sentfromexperience==true}" th:action="@{/signin?fromexperience=True}"
+                                  method="post" role="form" class="php-email-form">
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
@@ -141,7 +144,8 @@
                                     <br>
                                     <div class="form-group col-md-6">
                                         <label for="password">Лозинка</label>
-                                        <input type="password" class="form-control" name="password" id="password" required>
+                                        <input type="password" class="form-control" name="password" id="password"
+                                               required>
                                     </div>
                                 </div>
 
@@ -150,11 +154,14 @@
                                     <div class="error-message"></div>
                                     <div class="sent-message">Your message has been sent. Thank you!</div>
                                 </div>
-                                <div class="text-center"><button type="submit">Најави се</button></div>
+                                <div class="text-center">
+                                    <button type="submit">Најави се</button>
+                                </div>
                             </form>
                         </div>
                         <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-                            <form th:if="${sentfromforum==true}"  th:action="@{/signin?fromforum=True}"  method="post" role="form" class="php-email-form">
+                            <form th:if="${sentfromforum==true}" th:action="@{/signin?fromforum=True}" method="post"
+                                  role="form" class="php-email-form">
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
@@ -164,7 +171,8 @@
                                     <br>
                                     <div class="form-group col-md-6">
                                         <label for="password">Лозинка</label>
-                                        <input type="password" class="form-control" name="password" id="password" required>
+                                        <input type="password" class="form-control" name="password" id="password"
+                                               required>
                                     </div>
                                 </div>
 
@@ -173,21 +181,20 @@
                                     <div class="error-message"></div>
                                     <div class="sent-message">Your message has been sent. Thank you!</div>
                                 </div>
-                                <div class="text-center"><button type="submit">Најави се</button></div>
+                                <div class="text-center">
+                                    <button type="submit">Најави се</button>
+                                </div>
                             </form>
                         </div>
-
 
                     </div>
-
                 </div>
-            </section><!-- End Contact Section -->
-
+            </section>
         </div>
-    </section><!-- End Frequently Asked Questions Section -->
+    </section>
 
 
-</main><!-- End #main -->
+</main>
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
@@ -198,9 +205,8 @@
 </footer>
 
 <div id="preloader"></div>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
 <script th:src="@{../assets/vendor/aos/aos.js}"></script>
@@ -214,8 +220,5 @@
 <!-- Template Main JS File -->
 <script th:src="@{../assets/js/main.js}"></script>
 
-
-
 </body>
-
 </html>

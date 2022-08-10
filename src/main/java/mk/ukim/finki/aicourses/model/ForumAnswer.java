@@ -17,5 +17,5 @@ public class ForumAnswer {
     private ForumQuestion answersTo;
 
     @ManyToOne
-    private User userAsks;
+    private User userAnswers;
 }

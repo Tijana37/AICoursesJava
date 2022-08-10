@@ -14,7 +14,7 @@ public interface CourseService {
 
     Course create(String name, Long longitude, String teacher, String level, Long suggestedQuiz);
 
-    Course update(Long id, String name,Long longitude, String teacher, String level);
+    Course update(Long id, String name, Long longitude, String teacher, String level);
 
     Course delete(Long id);
 

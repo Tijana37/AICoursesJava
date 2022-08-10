@@ -1,6 +1,7 @@
 package mk.ukim.finki.aicourses.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import mk.ukim.finki.aicourses.model.enums.Role;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "appUsers")
 @Data
+@NoArgsConstructor
 public class User {
     @Id
     private String username;
@@ -29,9 +31,6 @@ public class User {
 
     @Enumerated(value = EnumType.STRING)
     private Role role;
-
-    public User() {
-    }
 
     public User(String username, String name,String surname,String password, Role role) {
         this.username = username;

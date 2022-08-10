@@ -13,7 +13,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/quizes")
 public class QuizController {
-
     private final QuizService quizService;
 
     public QuizController(QuizService quizService) {
@@ -21,29 +20,28 @@ public class QuizController {
     }
 
     @GetMapping
-    public String getQuizes(Model model){
+    public String getQuizes(Model model) {
         return "quizes";
     }
 
     @GetMapping("/quiz_AI_intro")
-    public String getQuizAI(Model model){
-        List<Integer> range = List.of(0,1,2);
+    public String getQuizAI(Model model) {
+        List<Integer> range = List.of(0, 1, 2);
         model.addAttribute("range", range);
         model.addAttribute("questions", quizService.findByName("Вовед во вештачка интелигенција").get().getQuestions());
         return "quiz_AI_intro2";
     }
 
     @PostMapping("/certificate")
-    public String getCertificate(@RequestParam("checkboxName")String[] checkboxValue,
-                                 Model model){
+    public String getCertificate(@RequestParam("checkboxName") String[] checkboxValue,
+                                 Model model) {
         double result = quizService.isPassed("Вовед во вештачка интелигенција", checkboxValue);
-       if (result!=-1.0){
-           model.addAttribute("passed", true);
-           model.addAttribute("points", (int)result);
-       }
-       else {
-           model.addAttribute("passed", false);
-       }
+        if (result != -1.0) {
+            model.addAttribute("passed", true);
+            model.addAttribute("points", (int) result);
+        } else {
+            model.addAttribute("passed", false);
+        }
 
         return "/certificate";
     }

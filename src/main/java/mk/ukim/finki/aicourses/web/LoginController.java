@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Base64;
 
 @Controller
 @RequestMapping("/signin")
@@ -25,11 +22,10 @@ public class LoginController {
     @GetMapping
     public String getLogin(@RequestParam(required = false) String fromexperience,
                            @RequestParam(required = false) String fromforum,
-                           Model model){
-        if(fromexperience!=null && fromexperience.equals("True")){
+                           Model model) {
+        if (fromexperience != null && fromexperience.equals("True")) {
             model.addAttribute("sentfromexperience", true);
-        }
-        else if(fromforum!=null && fromforum.equals("True")){
+        } else if (fromforum != null && fromforum.equals("True")) {
             model.addAttribute("sentfromforum", true);
         }
         return "signin";
@@ -41,17 +37,19 @@ public class LoginController {
                             @RequestParam(required = false) String fromexperience,
                             @RequestParam(required = false) String fromforum,
                             Model model,
-                            HttpSession session){
+                            HttpSession session) {
         User user = null;
         try {
             user = this.userService.login(email, password);
             session.setAttribute("user", user);
-            if(fromexperience!=null && fromexperience.equals("True")){
+
+            if (fromexperience != null && fromexperience.equals("True")) {
                 return "redirect:/experiences/experience_form";
             }
-            if(fromforum!=null && fromforum.equals("True")){
+            if (fromforum != null && fromforum.equals("True")) {
                 return "redirect:/forum/forumQuestion";
             }
+
             return "redirect:/profile";
         } catch (Exception exception) {
             model.addAttribute("hasError", true);

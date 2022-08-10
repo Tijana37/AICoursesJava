@@ -25,21 +25,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(String name, String surname, String username, String password, String email, String profession, Role role, byte[] profilePhoto) throws RuntimeException, IOException {
-        if (userRepository.findByEmail(email)!=null)
-            throw new UserExistsException();
+        if (userRepository.findByEmail(email) != null)
+            throw new UserExistsException("User already exists!");
 
-        Path newFile = Paths.get(  "src/main/resources/static/assets/userPhotos/" + username+ ".png");
+        Path newFile = Paths.get("src/main/resources/static/assets/userPhotos/" + username + ".png");
         Files.write(newFile, profilePhoto);
 
-        return userRepository.save(new User(username,name, surname, password, email, profession, role, profilePhoto));
+        return userRepository.save(new User(username, name, surname, password, email, profession, role, profilePhoto));
 
     }
 
     @Override
     public User login(String email, String password) {
         User u = userRepository.findByEmail(email);
-        if(u != null &&  u.getPassword().equals(password)){
-           return u;
+        if (u != null && u.getPassword().equals(password)) {
+            return u;
         }
         throw new UserNotExistsException();
     }

@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
-import java.nio.file.*;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -28,7 +25,7 @@ public class RegisterController {
     }
 
     @GetMapping
-    public String getRegister(Model model){
+    public String getRegister(Model model) {
         return "register";
     }
 
@@ -42,32 +39,17 @@ public class RegisterController {
                                @RequestParam String profession,
                                @RequestParam MultipartFile profilephoto, //do not put ("file"), wont work
                                Model model
-                                ) {
-
+    ) {
         //TODO: implement if verificationFile!=null -> Role.VERIFIED
         try {
             User user = this.userService.create(name, surname, username, password, email, profession, Role.BASIC, profilephoto.getBytes());
-
-
             return "redirect:/signin";
-        }
-        catch(RuntimeException e){
+        } catch (RuntimeException e) {
             model.addAttribute("hasError", true);
-            model.addAttribute("error", "User Already Exists");
+            model.addAttribute("error", e.getMessage());
             return "redirect:/register?error=" + e.getMessage();
         } catch (IOException e) { //because of the image conversion to byte array
             throw new RuntimeException(e);
         }
-
-    }
-
-    @PostMapping("/1")
-    public String postRegister(
-                               @RequestParam(value = "file") File profilephoto,
-                               Model model
-                               //@RequestParam("image") MultipartFile verificationFile
-    ){
-        System.out.println("okay");
-        return "certificate";
     }
 }
