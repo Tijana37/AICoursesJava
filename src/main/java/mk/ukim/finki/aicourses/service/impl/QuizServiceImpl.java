@@ -75,4 +75,26 @@ public class QuizServiceImpl implements QuizService {
             return total * 1.0 / (q.getTotalTrueAnswers()) * 100;
         return -1.0;
     }
+    
+    //Added for Heroku
+    @Override
+    public double isPassedWithId(Long quizId, String[] checkboxValues) {
+        int total = 0;
+        Quiz q = findById(quizId).get();
+        for (String s : checkboxValues) {
+            Integer question = Integer.parseInt(s.split("-")[0]);
+            Integer answer = Integer.parseInt(s.split("-")[1]);
+            if (answer == 0 && q.getQuestions().get(question).getAnswers().isTrueOption1()) {
+                total += 1;
+            } else if (answer == 1 && q.getQuestions().get(question).getAnswers().isTrueOption2()) {
+                total += 1;
+            } else if (answer == 2 && q.getQuestions().get(question).getAnswers().isTrueOption3()) {
+                total += 1;
+            }
+        }
+
+        if (total * 1.0 / (q.getTotalTrueAnswers()) * 100 > q.getMinPoints())
+            return total * 1.0 / (q.getTotalTrueAnswers()) * 100;
+        return -1.0;
+    }
 }
