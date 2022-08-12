@@ -21,4 +21,7 @@ public interface QuizService {
     Optional<Quiz> findByName(String name);
 
     double isPassed(String quizName, String[] checkboxValues);
+    
+    //changes for Heroku
+     double isPassedWithId(Long quizId, String[] checkboxValues);
 }
