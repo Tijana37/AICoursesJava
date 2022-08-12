@@ -40,7 +40,9 @@ public class QuizController {
                                  Model model) {
         double result = -1.0;
         if (checkboxValue != null) {
-            result = quizService.isPassed("Вовед во вештачка интелигенција", checkboxValue);
+            //changes for Heroku
+            //result = quizService.isPassed("Вовед во вештачка интелигенција", checkboxValue);
+            result = quizService.isPassedWithId(1L, checkboxValue);
         }
         if (result != -1.0) {
             model.addAttribute("passed", true);
