@@ -51,6 +51,6 @@ public class QuizController {
             model.addAttribute("passed", false);
         }
 
-        return "/certificate";
+        return "certificate";
     }
 }
