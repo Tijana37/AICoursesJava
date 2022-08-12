@@ -28,7 +28,10 @@ public class QuizController {
     public String getQuizAI(Model model) {
         List<Integer> range = List.of(0, 1, 2);
         model.addAttribute("range", range);
-        model.addAttribute("questions", quizService.findByName("Вовед во вештачка интелигенција").get().getQuestions());
+        //model.addAttribute("questions", quizService.findByName("Вовед во вештачка интелигенција").get().getQuestions());
+        //changed for Heroku
+                model.addAttribute("questions", quizService.findById(1L).get().getQuestions());
+
         return "quiz_AI_intro2";
     }
 
