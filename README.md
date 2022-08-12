@@ -40,7 +40,7 @@
 За бекенд користен е програмскиот јазик Јава со рамката SpringBoot. Фронтенд е развиен со помош на Boostrap & HTML. База на податоци која се користи е PostgreSQL.
 
 
-#Ресурси за пристапување до прототипот:
+# Ресурси за пристапување до прототипот:
 Heroku host:  https://pametko.herokuapp.com 
 GitHub code: https://github.com/Tijana37/AICoursesJava
 
