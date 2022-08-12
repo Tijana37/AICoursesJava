@@ -53,18 +53,7 @@
             background: #47b2e4;
         }
     </style>
-    <script>
-        const answeredQs = {0: 0, 1: 0, 2: 0};
 
-        function progress(arg1) {
-            console.log(answeredQs);
-            answeredQs[arg1] = 1;
-            current = (answeredQs[0] + answeredQs[1] + answeredQs[2]) / 3 * 100;
-            document.getElementById("progressQuiz").style.width = current + '%'
-            document.getElementById("progressQuiz").setAttribute("text", current + '%')
-            return answeredQs;
-        }
-    </script>
 </head>
 
 <body>
@@ -118,10 +107,7 @@
                     </div>
 
                    
-                    <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
-                         th:style="'background-image:url('+ @{../assets/img/why-us.png} " data-aos="zoom-in"
-                         data-aos-delay="150">&nbsp;
-                    </div>
+                   
                 </div>
 
             </div>
