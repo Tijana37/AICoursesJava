@@ -43,7 +43,7 @@
 # Ресурси за пристапување до прототипот:
 Heroku host:  https://pametko.herokuapp.com <br>
 GitHub code: https://github.com/Tijana37/AICoursesJava <br>
-
+YouTube video: https://www.youtube.com/watch?v=mX60gsA5hgA <br>
 
 *За да се тестира апликацијата со веќе креиран корисник искористете ги следните податоци во формата за најава:<br>
 email – petarpetrov@yahoo.com ; password – pp ;
